@@ -1,198 +1,145 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, BarChart3, Shield } from "lucide-react";
-import FloatingGeometry from "./FloatingGeometry";
+import { ArrowRight, Globe, Cpu } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.7, delay: i * 0.15, ease: [0.25, 0.4, 0.25, 1] },
   }),
 };
 
-const stats = [
-  { icon: Zap, label: "70% Less Overhead", desc: "vs. traditional agencies" },
-  { icon: BarChart3, label: "3× Faster Launch", desc: "AI-powered development" },
-  { icon: Shield, label: "99.9% Uptime", desc: "Enterprise reliability" },
-];
-
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 grid-bg" />
-      <div className="glow-orb w-[600px] h-[600px] bg-neon-blue -top-40 -right-60" />
-      <div className="glow-orb w-[500px] h-[500px] bg-neon-violet -bottom-40 -left-40" />
+      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[180px] pointer-events-none" />
 
-      {/* Floating 3D Geometry */}
-      <FloatingGeometry />
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto pt-24 pb-16">
+        {/* Main Headline */}
+        <motion.h1
+          custom={0}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="section-heading text-center mb-6 text-balance"
+        >
+          <span className="text-gradient">Architects of Influence</span>
+          <br />
+          <span className="text-white">& Infrastructure</span>
+        </motion.h1>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: Text Content */}
-          <div className="text-center lg:text-left">
-            {/* Badge */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={0}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon-blue/10 border border-neon-blue/20 text-neon-blue text-sm font-medium mb-8"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-neon-blue" />
-              </span>
-              AI-Powered Agency — est. 2025
-            </motion.div>
+        <motion.p
+          custom={1}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="text-text-secondary text-lg md:text-xl text-center max-w-3xl mx-auto mb-16 text-balance"
+        >
+          We engineer brands that dominate culture and systems that power revenue.
+          One division crafts perception. The other builds the machine.
+        </motion.p>
 
-            {/* Headline */}
-            <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-[1.05]"
-            >
-              Websites That{" "}
-              <span className="text-gradient">Convert.</span>
-              <br />
-              Revenue Systems That{" "}
-              <span className="text-gradient-warm">Scale.</span>
-              <br />
-              <span className="text-white">70% Less Overhead.</span>
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={2}
-              className="mt-6 text-lg md:text-xl text-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
-            >
-              EMERTHER builds AI-engineered websites and automated RCM billing
-              workflows for modern brands — at a fraction of the cost.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={3}
-              className="mt-8 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
-            >
-              <a href="#contact" className="btn-primary group text-base">
-                Start Your Project
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="#services" className="btn-ghost group">
-                Explore Services
-              </a>
-            </motion.div>
-
-            {/* Stats Row */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              custom={4}
-              className="mt-12 grid grid-cols-3 gap-6 max-w-lg mx-auto lg:mx-0"
-            >
-              {stats.map(({ icon: Icon, label, desc }) => (
-                <div key={label} className="text-center lg:text-left">
-                  <Icon className="w-5 h-5 text-neon-blue mx-auto lg:mx-0 mb-2" />
-                  <div className="text-sm font-semibold text-white">{label}</div>
-                  <div className="text-xs text-text-muted mt-0.5">{desc}</div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Right: Floating Visual (Desktop only canvas covers it) */}
-          <div className="hidden lg:block relative h-[500px]">
-            {/* Glass code container */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-card p-6 w-[380px] shadow-glow-lg"
-            >
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                </div>
-                <span className="text-xs text-text-muted font-mono ml-2">emerther.ai/core</span>
+        {/* Split Funnel */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* Left â€” Emerther Agency */}
+          <motion.div
+            custom={2}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="group relative glass-card p-8 md:p-10 transition-all duration-500 cursor-pointer hover-indigo"
+          >
+            <div className="absolute inset-0 rounded-2xl bg-accent-indigo/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-accent-indigo/10 flex items-center justify-center mb-6 group-hover:bg-accent-indigo/20 transition-colors">
+                <Globe className="w-6 h-6 text-accent-indigo" />
               </div>
-              <div className="space-y-2 font-mono text-xs">
-                <div className="flex gap-2">
-                  <span className="text-neon-violet">import</span>
-                  <span className="text-neon-cyan">{'{'}</span>
-                  <span className="text-white">RevenueEngine</span>
-                  <span className="text-neon-cyan">{'}'}</span>
-                  <span className="text-text-muted">from</span>
-                  <span className="text-green-400">&apos;emerther&apos;</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="text-neon-violet">const</span>
-                  <span className="text-neon-blue">em</span>
-                  <span className="text-text-muted">=</span>
-                  <span className="text-neon-cyan">new</span>
-                  <span className="text-white">RevenueEngine</span>
-                  <span className="text-text-muted">()</span>
-                </div>
-                <div className="text-text-muted pl-4">// AI-powered automation</div>
-                <div className="flex gap-2">
-                  <span className="text-neon-violet">await</span>
-                  <span className="text-neon-blue">em</span>
-                  <span className="text-text-muted">.</span>
-                  <span className="text-yellow-400">deploy</span>
-                  <span className="text-text-muted">({'{'})</span>
-                </div>
-                <div className="flex gap-2 pl-4">
-                  <span className="text-neon-cyan">website</span>
-                  <span className="text-text-muted">:</span>
-                  <span className="text-green-400">&apos;AI-optimized&apos;</span>
-                  <span className="text-text-muted">,</span>
-                </div>
-                <div className="flex gap-2 pl-4">
-                  <span className="text-neon-cyan">rcm</span>
-                  <span className="text-text-muted">:</span>
-                  <span className="text-green-400">&apos;automated&apos;</span>
-                </div>
-                <div className="text-text-muted">{'}'}</div>
-                <div className="flex gap-2">
-                  <span className="text-neon-cyan">console</span>
-                  <span className="text-text-muted">.</span>
-                  <span className="text-yellow-400">log</span>
-                  <span className="text-text-muted">(</span>
-                  <span className="text-green-400">&apos;🚀 Scaling revenue...&apos;</span>
-                  <span className="text-text-muted">)</span>
-                </div>
-                <div className="pt-2 border-t border-daisy-border/30">
-                  <span className="text-green-400">✓</span>
-                  <span className="text-text-secondary ml-2">70% overhead reduction achieved</span>
-                </div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
+                Emerther Agency
+              </h3>
+              <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                Brand Building &bull; Political PR &bull; Data-Driven Advertising
+              </p>
+              <p className="text-text-muted text-sm leading-relaxed mb-8">
+                We craft narratives that move markets. From startup positioning to
+                political campaigns, our data-backed creative engine ensures your
+                voice isn&apos;t just heard â€” it&apos;s followed.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent-indigo/10 text-accent-indigo font-medium text-sm
+                           group-hover:bg-accent-indigo group-hover:text-white transition-all duration-300"
+              >
+                Explore Agency
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right â€” Emerther Systems */}
+          <motion.div
+            custom={3}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="group relative glass-card p-8 md:p-10 transition-all duration-500 cursor-pointer hover-cyan"
+          >
+            <div className="absolute inset-0 rounded-2xl bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
+                <Cpu className="w-6 h-6 text-accent" />
               </div>
-              {/* Animated cursor */}
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
-                className="inline-block w-2 h-4 bg-neon-blue ml-1 align-middle"
-              />
-            </motion.div>
-          </div>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
+                Emerther Systems
+              </h3>
+              <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                Healthcare RCM SaaS &bull; Restaurant Operations SaaS
+              </p>
+              <p className="text-text-muted text-sm leading-relaxed mb-8">
+                Mission-critical software for industries that never sleep.
+                Revenue cycle automation for healthcare providers. End-to-end
+                restaurant OS for chains scaling from 1 to 100+ locations.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/10 text-accent font-medium text-sm
+                           group-hover:bg-accent group-hover:text-black transition-all duration-300"
+              >
+                Explore Systems
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </motion.div>
         </div>
-      </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-daisy-black to-transparent pointer-events-none" />
+        {/* Trust Stats */}
+        <motion.div
+          custom={4}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="flex flex-wrap items-center justify-center gap-8 md:gap-16 mt-16 pt-10 border-t border-border-subtle/30"
+        >
+          {[
+            { value: "70%", label: "Less Overhead" },
+            { value: "3Ã—", label: "Faster Launch" },
+            { value: "99.9%", label: "Uptime SLA" },
+          ].map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-white font-display">
+                {stat.value}
+              </div>
+              <div className="text-text-muted text-sm mt-1">{stat.label}</div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
