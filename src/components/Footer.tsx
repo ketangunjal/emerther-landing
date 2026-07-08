@@ -84,7 +84,7 @@ export default function Footer() {
             <span className="text-daisy-border hidden sm:inline">|</span>
             <span className="inline-flex items-center gap-1.5">
               <MapPin className="w-4 h-4" />
-              <span>San Francisco, CA</span>
+              <span>Mumbai, MH</span>
             </span>
           </div>
         </div>
