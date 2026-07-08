@@ -7,6 +7,7 @@ import AboutUs from "@/components/AboutUs";
 import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import ChatBubble from "@/components/ChatBubble";
+import BackgroundAnimation from "@/components/BackgroundAnimation";
 import { generateJSONLD } from "@/components/SEO";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(saasProduct) }}
       />
+      <BackgroundAnimation />
       <Navbar />
       <main>
         <Hero />
