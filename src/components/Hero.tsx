@@ -61,15 +61,16 @@ export default function Hero() {
                 <Globe className="w-6 h-6 text-accent-indigo" />
               </div>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
-                Emerther Agency
+                Branding & PR
               </h3>
               <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                Brand Building &bull; Political PR &bull; Data-Driven Advertising
+                Brand Incubation &bull; Political PR &bull; Data-Driven Advertising
               </p>
               <p className="text-text-muted text-sm leading-relaxed mb-8">
-                We craft narratives that move markets. From startup positioning to
-                political campaigns, our data-backed creative engine ensures your
-                voice isn&apos;t just heard â€” it&apos;s followed.
+                We craft narratives that command markets. From building corporate
+                identities from the ground up to executing high-stakes political
+                campaigns, our data-backed strategies ensure your message isn&apos;t
+                just seen — it dictates the conversation.
               </p>
               <a
                 href="#contact"
@@ -96,15 +97,17 @@ export default function Hero() {
                 <Cpu className="w-6 h-6 text-accent" />
               </div>
               <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-3">
-                Emerther Systems
+                SaaS & RCM Solutions
               </h3>
               <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                Healthcare RCM SaaS &bull; Restaurant Operations SaaS
+                Custom SaaS Development &bull; Revenue Cycle Automation &bull; Business OS
               </p>
               <p className="text-text-muted text-sm leading-relaxed mb-8">
-                Mission-critical software for industries that never sleep.
-                Revenue cycle automation for healthcare providers. End-to-end
-                restaurant OS for chains scaling from 1 to 100+ locations.
+                Scalable software infrastructure tailored for complex operations.
+                Whether automating massive revenue cycles or building end-to-end
+                management systems from scratch, we develop high-performance SaaS
+                solutions designed to optimize workflows, eliminate bottlenecks,
+                and drive profitability across any industry.
               </p>
               <a
                 href="#contact"
@@ -128,7 +131,7 @@ export default function Hero() {
         >
           {[
             { value: "70%", label: "Less Overhead" },
-            { value: "3Ã—", label: "Faster Launch" },
+            { value: "3x", label: "Faster Launch" },
             { value: "99.9%", label: "Uptime SLA" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
