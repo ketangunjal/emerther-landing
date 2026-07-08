@@ -22,7 +22,7 @@ const projects: PortfolioItem[] = [
     category: "saas",
     color: "from-accent/40 to-accent-indigo/40",
     size: "tall",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=800&fit=crop&auto=format",
+    image: "/portfolio-1.png",
   },
   {
     id: 2,
@@ -58,7 +58,7 @@ const projects: PortfolioItem[] = [
     category: "saas",
     color: "from-accent-indigo/40 to-accent/40",
     size: "normal",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop&auto=format",
+    image: "/portfolio-2.png",
   },
   {
     id: 6,
