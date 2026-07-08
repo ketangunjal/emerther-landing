@@ -11,6 +11,7 @@ interface PortfolioItem {
   category: "saas" | "ads" | "pr";
   color: string;
   size: "tall" | "wide" | "normal";
+  image: string;
 }
 
 const projects: PortfolioItem[] = [
@@ -21,6 +22,7 @@ const projects: PortfolioItem[] = [
     category: "saas",
     color: "from-accent/40 to-accent-indigo/40",
     size: "tall",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=800&fit=crop&auto=format",
   },
   {
     id: 2,
@@ -29,6 +31,7 @@ const projects: PortfolioItem[] = [
     category: "saas",
     color: "from-accent-indigo/40 to-accent/40",
     size: "normal",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop&auto=format",
   },
   {
     id: 3,
@@ -37,6 +40,7 @@ const projects: PortfolioItem[] = [
     category: "pr",
     color: "from-cta/30 to-accent/30",
     size: "wide",
+    image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&h=400&fit=crop&auto=format",
   },
   {
     id: 4,
@@ -45,6 +49,7 @@ const projects: PortfolioItem[] = [
     category: "ads",
     color: "from-accent/30 to-cta/30",
     size: "normal",
+    image: "https://images.unsplash.com/photo-1553729459-afe8e5ef21b7?w=600&h=400&fit=crop&auto=format",
   },
   {
     id: 5,
@@ -53,6 +58,7 @@ const projects: PortfolioItem[] = [
     category: "saas",
     color: "from-accent-indigo/40 to-accent/40",
     size: "normal",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop&auto=format",
   },
   {
     id: 6,
@@ -61,6 +67,7 @@ const projects: PortfolioItem[] = [
     category: "ads",
     color: "from-cta/30 to-accent-indigo/30",
     size: "tall",
+    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&h=800&fit=crop&auto=format",
   },
   {
     id: 7,
@@ -69,6 +76,7 @@ const projects: PortfolioItem[] = [
     category: "pr",
     color: "from-accent/30 to-accent-indigo/30",
     size: "normal",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop&auto=format",
   },
   {
     id: 8,
@@ -77,6 +85,7 @@ const projects: PortfolioItem[] = [
     category: "ads",
     color: "from-accent-indigo/40 to-cta/40",
     size: "wide",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=400&fit=crop&auto=format",
   },
 ];
 
@@ -103,8 +112,18 @@ function PortfolioCard({ project }: { project: PortfolioItem }) {
       transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
       className={`group relative overflow-hidden rounded-2xl bg-bg-card border border-border-subtle/50 cursor-pointer ${sizeClasses[project.size]}`}
     >
-      {/* Gradient Background Placeholder */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-40 group-hover:opacity-60 transition-opacity duration-500`} />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          loading="lazy"
+        />
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-50 group-hover:opacity-30 transition-opacity duration-500`} />
 
       {/* Pattern overlay */}
       <div className="absolute inset-0 opacity-10">
