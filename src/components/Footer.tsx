@@ -77,9 +77,9 @@ export default function Footer() {
               <span>+91 7219567951</span>
             </a>
             <span className="text-daisy-border hidden sm:inline">|</span>
-            <a href="mailto:hello@emerther.ai" className="inline-flex items-center gap-1.5 hover:text-neon-blue transition-colors">
+            <a href="mailto:support@emerthertech.co.in" className="inline-flex items-center gap-1.5 hover:text-neon-blue transition-colors">
               <Mail className="w-4 h-4" />
-              <span>hello@emerther.ai</span>
+              <span>support@emerthertech.co.in</span>
             </a>
             <span className="text-daisy-border hidden sm:inline">|</span>
             <span className="inline-flex items-center gap-1.5">

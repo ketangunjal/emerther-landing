@@ -1,6 +1,49 @@
 # 🚀 EMERTHER — Premium Landing Page
 
-## Project Progress — July 5, 2026
+## Project Progress — July 9, 2026
+
+---
+
+## 📧 Zoho Mail Verification (July 9)
+| Detail | Value |
+|--------|-------|
+| Provider | Zoho Mail |
+| CNAME Host | zb98920520 |
+| CNAME Value | zmverify.zoho.in |
+| Status | ✅ Added to DNS (propagating) |
+
+---
+
+## 🌐 DEPLOYED — LIVE
+
+| Detail | Value |
+|--------|-------|
+| **Domain** | [emerthertech.co.in](https://emerthertech.co.in) |
+| **WWW** | [www.emerthertech.co.in](https://www.emerthertech.co.in) |
+| **Vercel URL** | [emerther-landing.vercel.app](https://emerther-landing.vercel.app) |
+| **Platform** | Vercel (Hobby Plan) |
+| **GitHub** | [github.com/ketangunjal/emerther-landing](https://github.com/ketangunjal/emerther-landing) |
+| **SSL** | Auto-provisioned (90-day auto-renew) |
+| **DNS Provider** | hosting.com (stableserver.net nameservers) |
+| **Deploy Trigger** | Auto-deploy on `git push` to master |
+
+### DNS Records Added (hosting.com → DNS Settings → emerthertech.co.in)
+| Type | Host | Value |
+|------|------|-------|
+| A | @ | 216.198.79.1 |
+| A | @ | 64.29.17.1 |
+| CNAME | www | a5ed4eb03e673d9e.vercel-dns-017.com. |
+
+### Quick Commands
+```bash
+# Deploy updates
+cd "C:\Users\ketan\Desktop\EMERTHER-Landing"
+git add -A && git commit -m "updates" && git push
+
+# Check domain status
+vercel domains verify emerthertech.co.in
+vercel domains inspect emerthertech.co.in
+```
 
 ---
 
@@ -168,7 +211,20 @@ npm run build    # Production build
 - **Production build**: ✓ Compiled successfully — 0 errors
 - **TypeScript**: ✓ All types valid
 - **Lighthouse-ready**: Static generation, optimized assets
+- **Vercel Deploy**: ✓ Live on emerthertech.co.in (July 8, 2026)
+- **SSL**: ✓ Auto-renewing certificates
+- **DNS**: ✓ Verified & propagating
 
 ---
 
-*Last updated: July 5, 2026*
+## 🔄 Resume Work (July 9, 2026+)
+```bash
+cd "C:\Users\ketan\Desktop\EMERTHER-Landing"
+code .
+npm run dev
+# Site will be at http://localhost:3000
+```
+
+---
+
+*Last updated: July 8, 2026 — Deployed to Vercel with custom domain*
