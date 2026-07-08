@@ -1,6 +1,22 @@
 # 🚀 EMERTHER — Premium Landing Page
 
-## Project Progress — July 9, 2026
+## Project Progress — July 9, 2026 (v2 Redesign)
+
+---
+
+## 🎨 v2 Complete Redesign (July 9)
+| Change | Detail |
+|--------|--------|
+| **Color Palette** | bg `#121212`, accent `#00E5FF`, CTA `#FFB300` |
+| **Hero** | Split-Funnel: "Branding & PR" / "SaaS & RCM Solutions" |
+| **Services** | 5 cards: Brand Incubation, Political PR, Data-Driven Ads, Healthcare RCM SaaS, Restaurant SaaS |
+| **About Us** | 6 premium headers: Intelligence at the Core, High-Impact Low-Overhead, Speed as Strategy, Bulletproof Infrastructure, Precision-Engineered, Data-Driven Human-Led |
+| **Mission** | Rewritten for Indian market with lowest-price guarantee |
+| **Portfolio** | Bento grid with filter tabs, hover overlays, 2 custom dashboard images |
+| **Background** | Particle network canvas animation (60fps) |
+| **SEO** | JSON-LD: ProfessionalService + SoftwareApplication schema |
+| **Email** | `support@emerthertech.co.in` |
+| **Location** | Mumbai, MH |
 
 ---
 
@@ -227,4 +243,4 @@ npm run dev
 
 ---
 
-*Last updated: July 8, 2026 — Deployed to Vercel with custom domain*
+*Last updated: July 9, 2026 — v2 Redesign deployed with Portfolio & animations*
