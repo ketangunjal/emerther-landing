@@ -108,25 +108,30 @@ export default function AboutUs() {
               <p>
                 EMERTHER was founded on a single, uncompromising belief:{" "}
                 <span className="text-white font-medium">
-                  businesses deserve premium technology without the premium agency price tag.
+                  businesses in India deserve enterprise-grade technology and elite brand strategy without the bloated agency markups.
                 </span>
               </p>
               <p>
-                Traditional agencies charge $15K–$50K for a website and $5K+/mo for revenue
-                cycle management — not because the work is hard, but because their overhead
-                is massive. Layers of account managers, office leases, and legacy processes
-                inflate costs that you ultimately pay for.
+                Traditional tech and PR agencies drain your capital. They inflate your bills
+                to cover their massive overhead — layers of account managers, expensive office
+                leases, and outdated manual processes. You end up paying for their inefficiency,
+                not for your results.
               </p>
               <p>
                 We tore that model apart. By building our entire operation around{" "}
-                <span className="text-neon-blue font-medium">AI-driven pipelines</span>,
-                we deliver faster output, higher quality, and radically lower prices. The
-                math is simple: fewer humans doing repetitive tasks means more budget
-                going toward actual results.
+                <span className="text-accent font-medium">AI-driven pipelines</span>{" "}
+                and agile execution,{" "}
+                <span className="text-white font-medium">
+                  we guarantee the lowest pricing in the industry for premium SaaS architecture
+                  and brand engineering.
+                </span>{" "}
+                The math is simple: by eliminating the human bottleneck on repetitive tasks,
+                your entire budget goes directly toward measurable market growth.
               </p>
               <p className="text-white font-medium">
-                Our mission is to make enterprise-grade technology accessible to every
-                growing brand — not just the ones with six-figure agency budgets.
+                Our mission is to make high-performance technology and data-backed influence
+                accessible to every ambitious brand, ensuring you never overpay for
+                industry-leading results again.
               </p>
             </div>
           </motion.div>
