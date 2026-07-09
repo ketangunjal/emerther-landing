@@ -49,15 +49,15 @@ export default function Footer() {
               70% less overhead. 3× faster launch.
             </p>
             <div className="flex items-center gap-3">
-              {[Twitter, Linkedin, Github].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-daisy-border/30 flex items-center justify-center text-text-muted hover:text-neon-blue hover:border-neon-blue/30 hover:bg-neon-blue/5 transition-all duration-300"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-white/[0.03] border border-daisy-border/30 flex items-center justify-center text-text-muted hover:text-neon-blue hover:border-neon-blue/30 hover:bg-neon-blue/5 transition-all duration-300">
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-white/[0.03] border border-daisy-border/30 flex items-center justify-center text-text-muted hover:text-neon-blue hover:border-neon-blue/30 hover:bg-neon-blue/5 transition-all duration-300">
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a href="https://github.com/ketangunjal/emerther-landing" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-white/[0.03] border border-daisy-border/30 flex items-center justify-center text-text-muted hover:text-neon-blue hover:border-neon-blue/30 hover:bg-neon-blue/5 transition-all duration-300">
+                <Github className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
