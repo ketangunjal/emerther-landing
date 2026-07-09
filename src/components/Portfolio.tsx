@@ -1,16 +1,14 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 
 interface PortfolioItem {
   id: number;
   title: string;
   metric: string;
   category: "saas" | "ads" | "pr";
-  color: string;
-  size: "tall" | "wide" | "normal";
   image: string;
 }
 
@@ -20,72 +18,70 @@ const projects: PortfolioItem[] = [
     title: "Revenue Cycle Automation",
     metric: "99% Claim Success Rate",
     category: "saas",
-    color: "from-accent/40 to-accent-indigo/40",
-    size: "tall",
     image: "/portfolio-1.png",
   },
   {
     id: 2,
-    title: "Restaurant Chain OS",
-    metric: "47 Locations • Zero Downtime",
-    category: "saas",
-    color: "from-accent-indigo/40 to-accent/40",
-    size: "normal",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=400&fit=crop&auto=format",
-  },
-  {
-    id: 3,
-    title: "Political Campaign Strategy",
-    metric: "2.4M Reach • 68% Sentiment Shift",
-    category: "pr",
-    color: "from-cta/30 to-accent/30",
-    size: "wide",
-    image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=800&h=400&fit=crop&auto=format",
-  },
-  {
-    id: 4,
-    title: "D2C Brand Launch",
-    metric: "₹12Cr GMV in 90 Days",
-    category: "ads",
-    color: "from-accent/30 to-cta/30",
-    size: "normal",
-    image: "https://images.unsplash.com/photo-1553729459-afe8e5ef21b7?w=600&h=400&fit=crop&auto=format",
-  },
-  {
-    id: 5,
     title: "Healthcare Analytics Dashboard",
     metric: "40% Faster Reimbursement",
     category: "saas",
-    color: "from-accent-indigo/40 to-accent/40",
-    size: "normal",
     image: "/portfolio-2.png",
   },
   {
+    id: 3,
+    title: "Claims Processing System",
+    metric: "Automated Denial Management",
+    category: "saas",
+    image: "/7018605.jpg",
+  },
+  {
+    id: 4,
+    title: "Patient Billing Portal",
+    metric: "Real-Time Revenue Tracking",
+    category: "saas",
+    image: "/7098132(1).jpg",
+  },
+  {
+    id: 5,
+    title: "Insurance Verification Suite",
+    metric: "Instant Eligibility Checks",
+    category: "saas",
+    image: "/2110.w013.n001.549B.p30.549.jpg",
+  },
+  {
     id: 6,
-    title: "FMCG Awareness Campaign",
-    metric: "8.1M Impressions • 4.3% CTR",
-    category: "ads",
-    color: "from-cta/30 to-accent-indigo/30",
-    size: "tall",
-    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=600&h=800&fit=crop&auto=format",
+    title: "RCM Workflow Automation",
+    metric: "End-to-End Process Streamlining",
+    category: "saas",
+    image: "/2110.w013.n001.550B.p30.550.jpg",
   },
   {
     id: 7,
-    title: "Crisis Communication",
-    metric: "Reputation Recovered in 72hrs",
+    title: "Political Campaign Strategy",
+    metric: "2.4M Reach • 68% Sentiment Shift",
     category: "pr",
-    color: "from-accent/30 to-accent-indigo/30",
-    size: "normal",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop&auto=format",
+    image: "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=1200&h=700&fit=crop&auto=format",
   },
   {
     id: 8,
-    title: "EV Brand Digital Strategy",
-    metric: "340% ROAS • Nationwide Scale",
+    title: "D2C Brand Launch",
+    metric: "₹12Cr GMV in 90 Days",
     category: "ads",
-    color: "from-accent-indigo/40 to-cta/40",
-    size: "wide",
-    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=400&fit=crop&auto=format",
+    image: "https://images.unsplash.com/photo-1553729459-afe8e5ef21b7?w=1200&h=700&fit=crop&auto=format",
+  },
+  {
+    id: 9,
+    title: "FMCG Awareness Campaign",
+    metric: "8.1M Impressions • 4.3% CTR",
+    category: "ads",
+    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&h=700&fit=crop&auto=format",
+  },
+  {
+    id: 10,
+    title: "Crisis Communication",
+    metric: "Reputation Recovered in 72hrs",
+    category: "pr",
+    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=700&fit=crop&auto=format",
   },
 ];
 
@@ -96,86 +92,49 @@ const tabs = [
   { key: "pr", label: "PR & Data" },
 ];
 
-function PortfolioCard({ project }: { project: PortfolioItem }) {
-  const sizeClasses = {
-    tall: "md:row-span-2",
-    wide: "md:col-span-2",
-    normal: "",
-  };
-
-  return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-      className={`group relative overflow-hidden rounded-2xl bg-bg-card border border-border-subtle/50 cursor-pointer ${sizeClasses[project.size]}`}
-    >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          loading="lazy"
-        />
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-50 group-hover:opacity-30 transition-opacity duration-500`} />
-
-      {/* Pattern overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="w-full h-full" style={{
-          backgroundImage: "radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }} />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col justify-end h-full min-h-[240px] p-6">
-        {/* Hover Overlay */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          whileHover={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-bg-primary/95 via-bg-primary/70 to-transparent pt-12"
-        >
-          <div className="flex items-start justify-between gap-2">
-            <div>
-              <h3 className="font-display font-bold text-white text-lg leading-tight mb-1">
-                {project.title}
-              </h3>
-              <p className="text-accent text-sm font-medium">
-                {project.metric}
-              </p>
-            </div>
-            <ArrowUpRight className="w-5 h-5 text-accent flex-shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Subtle scale on hover */}
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="absolute inset-0 pointer-events-none"
-      />
-    </motion.div>
-  );
-}
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: number) => ({ x: dir < 0 ? 300 : -300, opacity: 0 }),
+};
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState<string>("all");
+  const [[currentIndex, direction], setSlide] = useState<[number, number]>([0, 0]);
 
   const filtered =
     activeTab === "all"
       ? projects
       : projects.filter((p) => p.category === activeTab);
 
+  const current = filtered[currentIndex] || filtered[0];
+
+  const paginate = useCallback(
+    (dir: number) => {
+      setSlide(([prev]) => {
+        const next = prev + dir;
+        if (next < 0) return [filtered.length - 1, dir];
+        if (next >= filtered.length) return [0, dir];
+        return [next, dir];
+      });
+    },
+    [filtered.length]
+  );
+
+  const goTo = useCallback((idx: number) => {
+    setSlide(([prev]) => [idx, idx > prev ? 1 : -1]);
+  }, []);
+
+  // Reset index when tab changes
+  const handleTabChange = (tab: string) => {
+    setActiveTab(tab);
+    setSlide([0, 0]);
+  };
+
+  if (!current) return null;
+
   return (
-    <section id="portfolio" className="relative py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="relative py-24 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="absolute inset-0 dot-bg opacity-20" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -201,7 +160,7 @@ export default function Portfolio() {
           {tabs.map((tab) => (
             <button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => handleTabChange(tab.key)}
               className={`relative px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
                 activeTab === tab.key
                   ? "bg-accent text-black shadow-[0_0_20px_rgba(0,229,255,0.3)]"
@@ -213,13 +172,78 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[240px] gap-4">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((project) => (
-              <PortfolioCard key={project.id} project={project} />
+        {/* Carousel */}
+        <div className="relative">
+          {/* Main Image Display */}
+          <div className="relative overflow-hidden rounded-2xl bg-bg-card border border-border-subtle/50 aspect-[16/9] md:aspect-[21/9]">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={`${activeTab}-${current.id}`}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
+                className="absolute inset-0"
+              >
+                <img
+                  src={current.image}
+                  alt={current.title}
+                  className="w-full h-full object-cover"
+                />
+
+                {/* Bottom Overlay with Info */}
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-bg-primary/95 via-bg-primary/60 to-transparent pt-24">
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <p className="text-accent text-sm font-medium mb-1">
+                        {current.metric}
+                      </p>
+                      <h3 className="font-display text-2xl md:text-3xl font-bold text-white">
+                        {current.title}
+                      </h3>
+                    </div>
+                    <ArrowUpRight className="w-6 h-6 text-accent flex-shrink-0" />
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={() => paginate(-1)}
+            className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-bg-primary/80 backdrop-blur border border-border-subtle/50 flex items-center justify-center text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300 z-20"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={() => paginate(1)}
+            className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-bg-primary/80 backdrop-blur border border-border-subtle/50 flex items-center justify-center text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300 z-20"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Dot Indicators */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            {filtered.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goTo(idx)}
+                className={`rounded-full transition-all duration-300 ${
+                  idx === currentIndex
+                    ? "w-8 h-2.5 bg-accent"
+                    : "w-2.5 h-2.5 bg-text-muted/40 hover:bg-text-muted"
+                }`}
+              />
             ))}
-          </AnimatePresence>
+          </div>
+
+          {/* Counter */}
+          <p className="text-center text-text-muted text-sm mt-3">
+            {currentIndex + 1} / {filtered.length}
+          </p>
         </div>
       </div>
     </section>
