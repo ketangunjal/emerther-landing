@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300">
+  <g fill="none" stroke="#141414" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 275 65 L 100 65 L 100 235 L 275 235" />
+    <path d="M 100 150 L 220 150" />
+  </g>
+  <text x="340" y="172"
+        font-family="Helvetica, Arial, sans-serif"
+        font-size="92"
+        font-weight="600"
+        letter-spacing="8"
+        fill="#141414">EMERTHER</text>
+</svg>

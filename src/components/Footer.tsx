@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Mail, MapPin, Phone, ArrowUpRight, Github, Twitter, Linkedin } from "lucide-react";
 
@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center shadow-glow-sm">
-                <img src="/logo.png" alt="EMERTHER" className="w-full h-full object-contain" />
+                <img src="/logo.svg" alt="EMERTHER" className="w-full h-full object-contain" />
               </div>
               <span className="font-display font-bold text-lg text-white">
                 EMERTHER
@@ -46,7 +46,7 @@ export default function Footer() {
             </a>
             <p className="text-text-muted text-sm leading-relaxed mb-6 max-w-xs">
               AI-powered websites and automated revenue systems for modern brands.
-              70% less overhead. 3× faster launch.
+              70% less overhead. 3Ã— faster launch.
             </p>
             <div className="flex items-center gap-3">
               <a href="#" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-white/[0.03] border border-daisy-border/30 flex items-center justify-center text-text-muted hover:text-neon-blue hover:border-neon-blue/30 hover:bg-neon-blue/5 transition-all duration-300">

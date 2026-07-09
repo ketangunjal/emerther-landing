@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -49,14 +49,14 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group flex-shrink-0">
             <div className="relative w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center shadow-glow-sm group-hover:shadow-glow-md transition-shadow duration-300">
-              <img src="/logo.png" alt="EMERTHER" className="w-full h-full object-contain" />
+              <img src="/logo.svg" alt="EMERTHER" className="w-full h-full object-contain" />
             </div>
             <span className="font-display font-bold text-lg text-white tracking-tight">
               EMERTHER
             </span>
           </a>
 
-          {/* Desktop Nav — centered */}
+          {/* Desktop Nav â€” centered */}
           <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <a
@@ -69,7 +69,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA — Call Us */}
+          {/* CTA â€” Call Us */}
           <div className="hidden lg:block flex-shrink-0">
             <a
               href="tel:+917219567951"
