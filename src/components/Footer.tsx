@@ -2,10 +2,28 @@
 
 import { Mail, MapPin, Phone, ArrowUpRight, Github, Twitter, Linkedin } from "lucide-react";
 
-const footerLinks = {
-  Services: ["AI Websites", "RCM Automation", "Custom Dashboards", "API Integration", "SEO Optimization"],
-  Company: ["About Us", "Case Studies", "Blog", "Careers", "Press Kit"],
-  Support: ["Documentation", "API Reference", "System Status", "Contact Support", "Migration Guide"],
+const footerLinks: Record<string, { label: string; href: string }[]> = {
+  Services: [
+    { label: "AI Websites", href: "#services" },
+    { label: "RCM Automation", href: "#services" },
+    { label: "Custom Dashboards", href: "#services" },
+    { label: "API Integration", href: "#services" },
+    { label: "SEO Optimization", href: "#services" },
+  ],
+  Company: [
+    { label: "About Us", href: "#about" },
+    { label: "Case Studies", href: "#portfolio" },
+    { label: "Blog", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Press Kit", href: "#" },
+  ],
+  Support: [
+    { label: "Documentation", href: "#" },
+    { label: "API Reference", href: "#" },
+    { label: "System Status", href: "#" },
+    { label: "Contact Support", href: "#contact" },
+    { label: "Migration Guide", href: "#" },
+  ],
 };
 
 export default function Footer() {
@@ -51,12 +69,12 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3">
                 {links.map((link) => (
-                  <li key={link}>
+                  <li key={link.label}>
                     <a
-                      href="#"
+                      href={link.href}
                       className="text-text-muted text-sm hover:text-white transition-colors duration-200 inline-flex items-center gap-1 group"
                     >
-                      {link}
+                      {link.label}
                       <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200" />
                     </a>
                   </li>
