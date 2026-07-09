@@ -1,8 +1,8 @@
 ﻿"use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 const slides = [
   { id: 1, image: "/7018605.jpg", title: "Claims Processing Dashboard", metric: "Automated Denial Management" },
@@ -20,31 +20,35 @@ const slideVariants = {
 };
 
 export default function Portfolio() {
-  const [[current, direction], setCurrent] = useState<[number, number]>([0, 1]);
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
   const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const paginate = useCallback(
-    (dir: number) => {
-      setCurrent(([prev]) => {
-        const next = prev + dir;
-        if (next < 0) return [slides.length - 1, dir];
-        if (next >= slides.length) return [0, dir];
-        return [next, dir];
-      });
-    },
-    []
-  );
+  const nextSlide = useCallback(() => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % slides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  }, []);
 
   const goTo = (idx: number) => {
-    setCurrent(([prev]) => [idx, idx > prev ? 1 : -1]);
+    setDirection(idx > current ? 1 : -1);
+    setCurrent(idx);
   };
 
-  // Auto-scroll
+  // Auto-scroll effect
   useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => paginate(1), 4000);
-    return () => clearInterval(timer);
-  }, [isPaused, paginate]);
+    if (!isPaused) {
+      intervalRef.current = setInterval(nextSlide, 4000);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused, nextSlide]);
 
   const slide = slides[current];
 
@@ -94,57 +98,59 @@ export default function Portfolio() {
                   alt={slide.title}
                   className="w-full h-full object-cover"
                 />
-
-                {/* Bottom Info Overlay */}
                 <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 bg-gradient-to-t from-bg-primary/95 via-bg-primary/60 to-transparent pt-24">
-                  <p className="text-accent text-sm font-medium mb-1">
-                    {slide.metric}
-                  </p>
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white">
-                    {slide.title}
-                  </h3>
+                  <p className="text-accent text-sm font-medium mb-1">{slide.metric}</p>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white">{slide.title}</h3>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Controls */}
           <button
-            onClick={() => paginate(-1)}
+            onClick={prevSlide}
             className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-bg-primary/80 backdrop-blur border border-border-subtle/50 flex items-center justify-center text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300 z-20"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
-            onClick={() => paginate(1)}
+            onClick={nextSlide}
             className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-bg-primary/80 backdrop-blur border border-border-subtle/50 flex items-center justify-center text-white hover:bg-accent hover:text-black hover:border-accent transition-all duration-300 z-20"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
 
-          {/* Dot Indicators */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => goTo(idx)}
-                className={`rounded-full transition-all duration-300 ${
-                  idx === current
-                    ? "w-8 h-2.5 bg-accent"
-                    : "w-2.5 h-2.5 bg-text-muted/40 hover:bg-text-muted"
-                }`}
-              />
-            ))}
+          {/* Pause/Play + Dots */}
+          <div className="flex items-center justify-center gap-3 mt-6">
+            <button
+              onClick={() => setIsPaused(!isPaused)}
+              className="w-8 h-8 rounded-full bg-bg-card border border-border-subtle/50 flex items-center justify-center text-text-muted hover:text-accent hover:border-accent/50 transition-all duration-300"
+            >
+              {isPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
+            </button>
+            <div className="flex items-center gap-2">
+              {slides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goTo(idx)}
+                  className={`rounded-full transition-all duration-300 ${
+                    idx === current
+                      ? "w-7 h-2.5 bg-accent"
+                      : "w-2.5 h-2.5 bg-text-muted/40 hover:bg-text-muted"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Progress Bar */}
           <div className="max-w-md mx-auto mt-4 h-0.5 bg-border-subtle/30 rounded-full overflow-hidden">
             <motion.div
-              key={current}
+              key={isPaused ? "paused" : current}
               className="h-full bg-accent rounded-full"
               initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 4, ease: "linear" }}
+              animate={{ width: isPaused ? "100%" : "100%" }}
+              transition={{ duration: isPaused ? 0 : 4, ease: "linear" }}
             />
           </div>
         </div>
