@@ -37,10 +37,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center shadow-glow-sm">
-                <img src="/logo.svg" alt="EMERTHER" className="w-full h-full object-contain" />
-              </div>
-              <span className="font-display font-bold text-lg text-white">
+              <span className="font-display font-bold text-xl text-white">
                 EMERTHER
               </span>
             </a>

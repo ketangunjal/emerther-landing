@@ -48,10 +48,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div className="relative w-9 h-9 rounded-lg overflow-hidden flex items-center justify-center shadow-glow-sm group-hover:shadow-glow-md transition-shadow duration-300">
-              <img src="/logo.svg" alt="EMERTHER" className="w-full h-full object-contain" />
-            </div>
-            <span className="font-display font-bold text-lg text-white tracking-tight">
+            <span className="font-display font-bold text-xl text-white tracking-tight">
               EMERTHER
             </span>
           </a>
