@@ -5,7 +5,6 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import AboutUs from "@/components/AboutUs";
 import Portfolio from "@/components/Portfolio";
-import Pricing from "@/components/Pricing";
 import Footer from "@/components/Footer";
 import ChatBubble from "@/components/ChatBubble";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
@@ -32,7 +31,6 @@ export default function Home() {
         <Services />
         <Portfolio />
         <AboutUs />
-        <Pricing />
       </main>
       <Footer />
       <ChatBubble />
