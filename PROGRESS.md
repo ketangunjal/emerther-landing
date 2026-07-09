@@ -12,11 +12,15 @@
 | **Services** | 5 cards: Brand Incubation, Political PR, Data-Driven Ads, Healthcare RCM SaaS, Restaurant SaaS |
 | **About Us** | 6 premium headers: Intelligence at the Core, High-Impact Low-Overhead, Speed as Strategy, Bulletproof Infrastructure, Precision-Engineered, Data-Driven Human-Led |
 | **Mission** | Rewritten for Indian market with lowest-price guarantee |
-| **Portfolio** | Bento grid with filter tabs, hover overlays, 2 custom dashboard images |
+| **Portfolio** | Auto-scrolling carousel, 6 RCM screenshots, pause/play, progress bar |
 | **Background** | Particle network canvas animation (60fps) |
 | **SEO** | JSON-LD: ProfessionalService + SoftwareApplication schema |
 | **Email** | `support@emerthertech.co.in` |
 | **Location** | Mumbai, MH |
+| **Pricing** | Removed |
+| **Logo** | Text-only "EMERTHER" (no image) |
+| **Footer** | Proper internal links, GitHub social icon linked |
+| **Navbar** | Services/Company/Support links with smooth scroll |
 
 ---
 
@@ -243,4 +247,4 @@ npm run dev
 
 ---
 
-*Last updated: July 9, 2026 — v2 Redesign deployed with Portfolio & animations*
+*Last updated: July 9, 2026 — v2 Final: Carousel portfolio, text logo, pricing removed*
